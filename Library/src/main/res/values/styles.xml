@@ -1,0 +1,8 @@
+<resources>
+
+    <style name="Animation.Action.Fragment" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/cube_show</item>
+        <item name="android:windowExitAnimation">@anim/cube_fade</item>
+    </style>
+
+</resources>
