@@ -28,14 +28,18 @@ public class MyFragment extends Cube<MyFragment> {
     }
 
     @Override
-    public int getLayoutRes() {
+    public int initContentView() {
         return R.layout.dialog;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ProgressBar progress = view.findViewById(R.id.progressBar);
+        initView();
+    }
+
+    private void initView() {
+        ProgressBar progress = findViewById(R.id.progressBar);
         progress.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -8,6 +8,6 @@ public abstract class Base extends DialogFragment {
         void onDismiss(int code);
     }
 
-    public abstract int getLayoutRes();
+    public abstract int initContentView();
 
 }

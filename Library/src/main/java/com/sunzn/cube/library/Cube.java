@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
+import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentManager;
@@ -21,6 +22,8 @@ import java.util.TimerTask;
 
 @SuppressWarnings("ALL")
 public abstract class Cube<T extends Cube> extends Base {
+
+    private View mContentView;
 
     private boolean mCancel = true;
 
@@ -53,7 +56,17 @@ public abstract class Cube<T extends Cube> extends Base {
             window.setGravity(getGravity());
             window.setWindowAnimations(getAnimation());
         }
-        return inflater.inflate(getLayoutRes(), container, false);
+        return inflater.inflate(initContentView(), container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        mContentView = view;
+    }
+
+    public final <T extends View> T findViewById(@IdRes int id) {
+        return mContentView.findViewById(id);
     }
 
     public T setDismissListener(DismissListener listener) {
